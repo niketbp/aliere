@@ -21,7 +21,10 @@ class Fund():
         pass
 
     def delete(self):
-        db.users.delete_one({"fundName": self.fund_name})
+        id = db.funds.find_one({'fundName': self.fund_name})['_id']
+        db.users.update_all({}, {'$pop': {'investorFunds': id}})
+        db.users.update_all({}, {'$pop': {'playerFunds': id}})
+        db.funds.delete_one({"fundName": self.fund_name})
 
     def join(self, username):
         id = db.funds.find_one({'fundName': self.fund_name})['_id']
