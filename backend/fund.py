@@ -1,6 +1,7 @@
 from globals import db
 
-class Fund():
+
+class Fund:
 
     def __init__(self, name):
         self.fund_name = name
@@ -33,3 +34,9 @@ class Fund():
     def leave(self, username):
         id = db.funds.find_one({'fundName': self.fund_name})['_id']
         db.users.update_one({'username': username}, {'$pop': {'playerFunds': id}})
+
+    def get_data(self):
+        results = db.funds.find_one({"fundName": self.fund_name})
+        if not results:
+            raise Exception('Invalid fund name')
+        return results

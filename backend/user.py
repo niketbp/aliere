@@ -1,7 +1,7 @@
 from globals import db
 
 
-class User():
+class User:
 
     def __init__(self, username):
         self.username = username
@@ -20,8 +20,22 @@ class User():
         }
         db.users.insert_one(entry)
 
-    def update(self):
-        pass
+    def update_username(self, new_username):
+        update_result = db.users.update_one({'username': self.username}, {'$set': {'username': new_username}})
+        if update_result.modified_count == 0:
+            raise Exception("Unable to update username. Please make sure it is spelled correctly!")
+        self.username = new_username
+
+    def update_score(self, score):
+        update_result = db.users.update_one({'username': self.username}, {'$set': {'score': score}})
+        if update_result.modified_count == 0:
+            raise Exception("Unable to update username. Please make sure it is spelled correctly!")
 
     def delete(self):
         db.users.delete_one({"username": self.username})
+
+    def get_data(self):
+        results = db.users.find_one({"username": self.username})
+        if not results:
+            raise Exception('Invalid username')
+        return results
