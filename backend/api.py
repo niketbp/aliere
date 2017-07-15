@@ -50,9 +50,23 @@ def user_delete():
 @app.route("/user/update", methods=['GET'])
 def user_update():
     try:
-        validate_arguments(['user'], 1)
         user = User(request.args.get('user'))
-        user.update()
+        if len(request.args) == 1:
+            return jsonify({'Error': 'Need to provide at least two arguments, one being user'})
+        elif len(request.args) > 3:
+            return jsonify({'Error': 'Too many arguments provided'})
+        else:
+            for arg in request.args:
+                if arg == 'user':
+                    continue
+                elif arg == 'new_user':
+                    user.update_username(request.args.get('new_user'))
+                elif arg == 'score':
+                    user.update_score(int(request.args.get('score')))
+                else:
+                    return jsonify({'Error': 'Incorrect parameter %s' % arg})
+        return jsonify({'Status': 'User %s updated successfully' % request.args.get('user')})
+
     except Exception as e:
         return jsonify({'Error': str(e)})
 
@@ -87,6 +101,28 @@ def proposal_delete():
         proposal = Proposal(request.args.get('name'))
         proposal.delete()
         return jsonify({'Status': 'Proposal %s deleted successfully' % proposal.name})
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/proposal/downvote", methods=['GET'])
+def proposal_create():
+    try:
+        validate_arguments(['name'], 1)
+        proposal = Proposal(request.args.get('name'))
+        proposal.downvote()
+        return jsonify({'Status': 'Proposal %s: Vote removed successfully' % proposal.name})
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/proposal/upvote", methods=['GET'])
+def proposal_create():
+    try:
+        validate_arguments(['name'], 1)
+        proposal = Proposal(request.args.get('name'))
+        proposal.upvote()
+        return jsonify({'Status': 'Proposal %s upvoted successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
