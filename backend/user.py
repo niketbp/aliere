@@ -33,3 +33,9 @@ class User:
 
     def delete(self):
         db.users.delete_one({"username": self.username})
+
+    def get_data(self):
+        results = db.users.find_one({"username": self.username})
+        if not results:
+            raise Exception('Invalid username')
+        return results
