@@ -24,15 +24,17 @@
 	<div class="current-proposals">
 		<div class="current-proposals-header">Current Proposals</div>
 		<div class="proposals-wrapper">
-			<div class="proposal">
+
+			<div class="proposal" ng-repeat="proposal in proposals">
 				<div class="proposal-votes">
 					<img src="img/up-arrow.svg" ng-click="incrementVote('MSFT')" class="arrow-button">
-					<div class="num-votes">{{votes['MSFT']}}</div>
+					<div class="num-votes">{{proposal.numVotes}}</div>
 					<img src="img/down-arrow.svg" ng-click="decrementVote('MSFT')" class="arrow-button">
 				</div>
-				<div class="proposal-name">MSFT</div>
-				<div class="proposal-value">+10 shares</div>
+				<div class="proposal-name">{{proposal.name}}</div>
+				<div class="proposal-value">+{{proposal.shares}} shares</div>
 			</div>
+
 		</div>
 		<div ng-click="show = !show" class="add-proposal-header">+ Add new proposal</div>
 		<div ng-show="show" class="new-proposal">
