@@ -7,14 +7,14 @@ class User():
         self.score = score
 
     def create(self):
-        result = {
+        entry = {
             "username": self.username,
             "score": self.score,
             "proposals": [],
             "investorFunds": [],
             "playerFunds": []
         }
-        db.users.insert_one(result)
+        db.users.insert_one(entry)
 
     def update(self):
         pass
