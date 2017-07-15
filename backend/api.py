@@ -60,7 +60,7 @@ def user_update():
 @app.route("/proposal/act", methods=['GET'])
 def proposal_act():
     try:
-        validate_arguments()
+        validate_arguments(['name'], 1)
 
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -92,7 +92,7 @@ def proposal_delete():
 @app.route("/fund/create", methods=['GET'])
 def fund_create():
     try:
-        validate_arguments()
+        validate_arguments(['name'], 1)
 
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -101,7 +101,7 @@ def fund_create():
 @app.route("/fund/delete", methods=['DELETE'])
 def fund_delete():
     try:
-        validate_arguments()
+        validate_arguments(['name'], 1)
 
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -110,7 +110,7 @@ def fund_delete():
 @app.route("/fund/join", methods=['GET'])
 def fund_join():
     try:
-        validate_arguments()
+        validate_arguments(['name', 'username'], 2)
 
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -119,7 +119,7 @@ def fund_join():
 @app.route("/fund/leave", methods=['GET'])
 def fund_leave():
     try:
-        validate_arguments()
+        validate_arguments(['name', 'username'], 2)
 
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -128,7 +128,7 @@ def fund_leave():
 @app.route("/stock", methods=['GET'])
 def stock():
     try:
-        validate_arguments('ticker', 1)
+        validate_arguments(['ticker'], 1)
         ticker = request.args.get('ticker')
         return jsonify(get_ticker_data(ticker))
     except Exception as e:
