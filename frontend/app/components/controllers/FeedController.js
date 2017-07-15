@@ -19,8 +19,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 
 		$http({
 			method: 'GET',
-			data: data,
-			url: 'http://127.0.0.1:5000/proposal/create'
+			url: `http://127.0.0.1:5000/proposal/create?name=${data.name}&ticker=${data.ticker}&shares=${data.shares}&transaction=${data.transaction}&user=${data.user}&fund=${data.fund}`,
 		}).then(function successfulCallback(response) {
 			//reload feed
 		console.log(response)
