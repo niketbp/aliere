@@ -1,11 +1,21 @@
 from flask import Flask
 from flask import request, jsonify
+import json
+from bson import ObjectId
 from fund import Fund
 from proposal import Proposal
 from stock import get_ticker_data
 from user import User
 
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+
 app = Flask(__name__)
+app.json_encoder = JSONEncoder
 
 
 def validate_arguments(args, num_args):
@@ -31,7 +41,8 @@ def user_create():
 def user_data():
     try:
         validate_arguments(['user'], 1)
-
+        user = User(request.args.get('user'))
+        return jsonify(user.get_data())
     except Exception as e:
         return jsonify({'Error': str(e)})
 
@@ -74,9 +85,9 @@ def user_update():
 @app.route("/proposal/act", methods=['GET'])
 def proposal_act():
     try:
-        validate_arguments(['name'], 1)
+        validate_arguments(['name', 'username', 'fund_name'], 3)
         proposal = Proposal(request.args.get('name'))
-        proposal.act()
+        proposal.act(request.args.get('username'), request.args.get('fund_name'))
         return jsonify({'Status': 'Proposal %s acted successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -94,12 +105,22 @@ def proposal_create():
         return jsonify({'Error': str(e)})
 
 
-@app.route("/proposal/delete", methods=['DELETE'])
-def proposal_delete():
+@app.route("/proposal/data", methods=['GET'])
+def proposal_data():
     try:
         validate_arguments(['name'], 1)
         proposal = Proposal(request.args.get('name'))
-        proposal.delete()
+        return jsonify(proposal.get_data())
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/proposal/delete", methods=['DELETE'])
+def proposal_delete():
+    try:
+        validate_arguments(['name', 'username', 'fund_name'], 3)
+        proposal = Proposal(request.args.get('name'))
+        proposal.delete(request.args.get('username'), request.args.get('fund_name'))
         return jsonify({'Status': 'Proposal %s deleted successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -134,6 +155,16 @@ def fund_create():
         fund = Fund(request.args.get('name'))
         fund.create(request.args.get('username'))
         return jsonify({'Status': 'Fund %s created successfully' % fund.fund_name})
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/fund/data", methods=['GET'])
+def fund_data():
+    try:
+        validate_arguments(['name'], 1)
+        fund = Fund(request.args.get('name'))
+        return jsonify(fund.get_data())
     except Exception as e:
         return jsonify({'Error': str(e)})
 

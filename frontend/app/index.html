@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="aliereApp" class="no-js">
+<html lang="en" ng-app="aliereApp" ng-controller="MainController" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="resources/css/sidebar.css">
   <link rel="stylesheet" href="resources/css/feed.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
   <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
   <!-- <base href="/"> -->
 </head>
@@ -20,11 +19,12 @@
   <div class="navbar">
     <div class="logo-wrapper">
       <img src="img/aliere-logo.svg">
-      <div class="app-name">Aliere</div>
+      <div class="app-name"><a ng-href="/#">Aliere</a></div>
     </div>
     <div class="navbar-link-wrapper">
       <div class="navbar-link">About</div>
-      <div class="navbar-link">Log out</div>
+      <div ng-show="logout" class="navbar-link"><a href="javascript:void(0)" ng-click="signOut()">Log out</a></div>
+      <div ng-hide="logout" class="navbar-link"><a ng-href="#/login">Sign in</a></div>
     </div>
   </div>
   <div class="app-view" ng-view></div>
@@ -32,6 +32,7 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
   <script src="resources/bower/angular/angular.js"></script>
   <script src="resources/bower/angular-route/angular-route.min.js"></script>
   <script src="app.js"></script>

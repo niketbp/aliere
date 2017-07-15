@@ -1,9 +1,14 @@
-html,body { 
+html,body {
 	margin: 0px;
 	font-family: 'Open Sans', sans-serif;
-} 
+}
 
-.navbar { 
+a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.navbar {
 	height: 56px;
 	background: #002F30;
 	display: flex;
@@ -13,15 +18,15 @@ html,body {
 .logo-wrapper {
 	display: flex;
 	align-items: center;
-	padding-left: 15px; 
+	padding-left: 15px;
 }
 
-.app-name { 
+.app-name {
 	font-size: 30px;
 	color: #FFFFFF;
 	letter-spacing: 8px;
 	text-transform: uppercase;
-	padding-left: 15px; 
+	padding-left: 15px;
 }
 
 .navbar-link-wrapper {
@@ -31,7 +36,7 @@ html,body {
 	margin-right: 15px;
 }
 
-.navbar-link { 
+.navbar-link {
 	padding: 10px;
 	font-size: 16px;
 	color: #FFFFFF;
