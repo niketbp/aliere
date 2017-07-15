@@ -63,3 +63,14 @@ tr:nth-child(odd) {
 	text-transform: uppercase;
 	margin: 20px;
 }
+
+.proposal {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.num-votes {
+	font-size: 20px;
+	color: #23F4BD;
+}
