@@ -1,4 +1,5 @@
 from globals import db
+from fund import Fund
 
 
 class User:
@@ -36,6 +37,16 @@ class User:
 
     def get_data(self):
         results = db.users.find_one({"username": self.username})
+        for i in range(len(results['proposals'])):
+            results['proposals'][i] = db.proposals.find_one({"_id": results['proposals'][i]})
+        for i in range(len(results['investorFunds'])):
+            fund = db.funds.find_one({"_id": results['investorFunds'][i]})
+            fund_obj = Fund(fund['fundName'])
+            results['investorFunds'][i] = fund_obj.get_data()
+        for i in range(len(results['playerFunds'])):
+            fund = db.funds.find_one({"_id": results['playerFunds'][i]})
+            fund_obj = Fund(fund['fundName'])
+            results['playerFunds'][i] = fund_obj.get_data()
         if not results:
             raise Exception('Invalid username')
         return results

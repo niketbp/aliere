@@ -37,6 +37,8 @@ class Fund:
 
     def get_data(self):
         results = db.funds.find_one({"fundName": self.fund_name})
+        for i in range(len(results['proposals'])):
+            results['proposals'][i] = db.proposals.find_one({"_id": results['proposals'][i]})
         if not results:
             raise Exception('Invalid fund name')
         return results
