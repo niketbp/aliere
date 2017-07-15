@@ -17,6 +17,7 @@
 
     "prestart": "npm install",
     "start": "http-server app -a localhost -p 8000 -c-1",
+    "local-dev": "http-server app -a localhost -p 8000 -c-1",
 
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
