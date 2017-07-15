@@ -21,4 +21,4 @@ class User():
         pass
 
     def delete(self):
-        pass
+        db.users.delete_one({"username": self.username})

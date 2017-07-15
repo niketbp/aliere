@@ -22,7 +22,7 @@ def user_create():
         validate_arguments(['user'], 1)
         user = User(request.args.get('user'), 0)
         user.create()
-        return jsonify({'Status': 'User added successfully'})
+        return jsonify({'Status': 'User %s added successfully' % user.username})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
@@ -30,7 +30,7 @@ def user_create():
 @app.route("/user/data")
 def user_data():
     try:
-        validate_arguments('user', 1)
+        validate_arguments(['user'], 1)
 
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -39,9 +39,10 @@ def user_data():
 @app.route("/user/delete")
 def user_delete():
     try:
-        validate_arguments('user', 1)
-        user = User(request.args.get('user'))
+        validate_arguments(['user'], 1)
+        user = User(request.args.get('user'), 0)
         user.delete()
+        return jsonify({'Status': 'User %s deleted successfully' % user.username})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
@@ -49,8 +50,8 @@ def user_delete():
 @app.route("/user/update")
 def user_update():
     try:
-        validate_arguments('user', 1)
-        user = User(request.args.get('user'))
+        validate_arguments(['user'], 1)
+        user = User(request.args.get('user'), 0)
         user.update()
     except Exception as e:
         return jsonify({'Error': str(e)})
