@@ -37,3 +37,7 @@ html,body {
 	color: #FFFFFF;
 	text-transform: uppercase;
 }
+
+.app-view {
+	height: calc(100vh - 56px);
+}
