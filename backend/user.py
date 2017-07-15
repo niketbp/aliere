@@ -8,6 +8,10 @@ class User():
         self.score = score
 
     def create(self):
+        existing_user = db.users.find_one({"username": self.username})
+        if existing_user:
+            raise Exception("Username already exists")
+
         result = {
             "username": self.username,
             "score": self.score,
