@@ -9,62 +9,50 @@ angular.module('aliereApp.login', ['ngRoute'])
 
 // Routing configuration for this module
 .config(['$routeProvider',function($routeprovider){
-	$routeprovider.when('/login', {
+	$routeprovider.when('/', {
 		controller: 'LoginController',
 		templateUrl: 'components/views/loginView.html'
 	});
 }])
 
 // Controller definition for this module
-.controller('LoginController', function($scope,$http,$timeout) {
+.controller('LoginController', ['$scope', function($scope) {
+	init();
 
-		// Global variables for this controller
-		var responseStatus = '';
-		var userIp = 'not yet retrieved';
+  function onSuccess(googleUser) {
+  	window.localStorage.setItem("username", googleUser.getBasicProfile().getName());
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+  }
 
-		// Just a housekeeping.
-		// In the init method we are declaring all the
-		// neccesarry settings and assignments to be run once
-		// controller is invoked
-		init();
+  function onFailure(error) {
+    console.log(error);
+  }
 
-		function init(){};
+  function renderButton() {
+    gapi.signin2.render('my-signin2', {
+      'scope': 'profile email',
+      'width': 240,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark',
+      'onsuccess': onSuccess,
+      'onfailure': onFailure
+    });
+  }
+  window.renderButton = renderButton;
 
-		// Get requestors IP address from httpbin.org
-		function loadUserIp(){
+  $scope.signOut = function(googleUser) {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+    	window.localStorage.removeItem("username");
+      console.log('User signed out.');
+    });
+  }
 
-			// Before serving login page we are doing example http request
-			// to web API to verify if login service is up and running.
-			// Using httpbin.org as mock in this case - it returns requestors IP address
+	function init(){
+		console.log('hey');
+	};
 
-			return $http.get('http://httpbin.org/ip').
-		  		then(function(response) {
-		    	// this callback will be called asynchronously
-		    	// when the response is available
-		    	responseStatus = response.status;
-		    	userIp = response.data.origin;
-		    	console.log(userIp);
-		    	console.log(JSON.stringify(response.data));
+	this.message = "Hello Home!";
 
-		    	// assigning userIp to scope
-		    	return $scope.userip = userIp;
-
-		    }, function(errorResponse) {
-		    	// called asynchronously if an error occurs
-		    	// or server returns response with an error status.
-		    	responseStatus = errorResponse.status;
-		    	console.log(JSON.stringify(errorResponse));
-
-		    	// assigning userIp to scope
-		    	return $scope.userip = userIp;
-		    });
-
-		};
-
-		this.message = "Login Time!";
-
-		// // Adding small delay for IP address to be populated before loading the view
-		var filterTextTimeout = $timeout(function() {
-			loadUserIp();
-        }, 500); // delay 500 ms
-});
+}]);
