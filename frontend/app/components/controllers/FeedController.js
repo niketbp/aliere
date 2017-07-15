@@ -30,7 +30,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 
 	$scope.votes = {
 		'MSFT': 85,
-		'GOOG': 100, 
+		'GOOG': 0, 
 	};
 
 	$scope.userVotes = {
