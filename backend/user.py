@@ -1,5 +1,6 @@
 from globals import db
 
+
 class User():
 
     def __init__(self, username, score):
@@ -14,13 +15,10 @@ class User():
             "investorFunds": [],
             "playerFunds": []
         }
-        print "Test"
-        test = db.users.insert_one(result)
-        print test
-        print "test2"
+        db.users.insert_one(result)
 
     def update(self):
         pass
 
     def delete(self):
-        pass
+        db.users.delete_one({"username": self.username})
