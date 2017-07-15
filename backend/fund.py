@@ -23,8 +23,8 @@ class Fund:
 
     def delete(self):
         id = db.funds.find_one({'fundName': self.fund_name})['_id']
-        db.users.update_all({}, {'$pop': {'investorFunds': id}})
-        db.users.update_all({}, {'$pop': {'playerFunds': id}})
+        db.users.update_all({}, {'$pull': {'investorFunds': id}})
+        db.users.update_all({}, {'$pull': {'playerFunds': id}})
         db.funds.delete_one({"fundName": self.fund_name})
 
     def join(self, username):
@@ -33,7 +33,9 @@ class Fund:
 
     def leave(self, username):
         id = db.funds.find_one({'fundName': self.fund_name})['_id']
-        db.users.update_one({'username': username}, {'$pop': {'playerFunds': id}})
+        if not id:
+            raise Exception("Fund doesn't exist")
+        db.users.update_one({'username': username}, {'$pull': {'playerFunds': id}})
 
     def get_data(self):
         results = db.funds.find_one({"fundName": self.fund_name})
