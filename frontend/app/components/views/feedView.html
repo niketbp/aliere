@@ -33,14 +33,23 @@
 				<div class="proposal-name">MSFT</div>
 				<div class="proposal-value">+10 shares</div>
 			</div>
+			<div class="proposal" ng-show="show">
+				<div class="proposal-votes">
+					<img src="img/up-arrow.svg" ng-click="incrementVote('GOOG')" class="arrow-button">
+					<div class="num-votes">{{votes['GOOG']}}</div>
+					<img src="img/down-arrow.svg" ng-click="decrementVote('GOOG')" class="arrow-button">
+				</div>
+				<div class="proposal-name">GOOG</div>
+				<div class="proposal-value">+25 shares</div>
+			</div>
 		</div>
-		<div ng-click="show = !show" class="add-proposal-header">+ Add new proposal</div>
-		<div ng-show="show" class="new-proposal">
+		<div ng-click="addVote =! addVote" class="add-proposal-header">+ Add new proposal</div>
+		<div ng-show="addVote" class="new-proposal">
 		<form name="proposalForm" ng-submit="addProposal(proposal)">
 		 <div class="proposal-form-item"><span class="proposal-label">NAME:</span> <input type="text" name="proposal-name" ng-model="proposal.name"></div>
 		  <div class="proposal-form-item"><span class="proposal-label">STOCK:</span> <input type="text" name="proposal-stock" ng-model="proposal.stock"></div>
 		  <div class="proposal-form-item"><span class="proposal-label">SHARES:</span> <input type="text" name="proposal-shares" ng-model="proposal.shares"></div>
-		  <button class="proposal-button" type="submit">SUBMIT</div>
+		  <button class="proposal-button" ng-click='show = !show'" type="submit">SUBMIT</div>
 		</form>
 		</div>
 	</div>

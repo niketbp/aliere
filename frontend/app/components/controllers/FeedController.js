@@ -30,10 +30,12 @@ angular.module('aliereApp.feed', ['ngRoute'])
 
 	$scope.votes = {
 		'MSFT': 85,
+		'GOOG': 100, 
 	};
 
 	$scope.userVotes = {
 		'MSFT': 0,
+		'GOOG' : 0,
 	};
 
 	$scope.currentStocks = [{
