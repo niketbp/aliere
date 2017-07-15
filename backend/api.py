@@ -1,11 +1,21 @@
 from flask import Flask
 from flask import request, jsonify
+import json
+from bson import ObjectId
 from fund import Fund
 from proposal import Proposal
 from stock import get_ticker_data
 from user import User
 
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+
 app = Flask(__name__)
+app.json_encoder = JSONEncoder
 
 
 def validate_arguments(args, num_args):

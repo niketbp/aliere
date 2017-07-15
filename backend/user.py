@@ -1,5 +1,4 @@
 from globals import db
-from bson.json_util import dumps
 
 
 class User:
@@ -36,4 +35,7 @@ class User:
         db.users.delete_one({"username": self.username})
 
     def get_data(self):
-        return dumps(db.users.find_one({"username": self.username}))
+        results = db.users.find_one({"username": self.username})
+        if not results:
+            raise Exception('Invalid user')
+        return results
