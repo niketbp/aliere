@@ -92,8 +92,10 @@ def proposal_delete():
 @app.route("/fund/create", methods=['GET'])
 def fund_create():
     try:
-        validate_arguments(['name'], 1)
-
+        validate_arguments(['name', 'username'], 1)
+        fund = Fund(request.args.get('name'), request.args.get('username'))
+        fund.create()
+        return jsonify({'Status': 'Fund %s created successfully' % fund.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
