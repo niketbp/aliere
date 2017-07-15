@@ -17,11 +17,10 @@ angular.module('aliereApp.home', ['ngRoute'])
 
 // Controller definition for this module
 .controller('HomeController', ['$scope', function($scope) {
-
 	init();
 
 	function init(){
-
+		console.log('hey');
 	};
 
 	this.message = "Hello Home!";
