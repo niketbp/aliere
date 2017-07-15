@@ -61,7 +61,9 @@ def user_update():
 def proposal_act():
     try:
         validate_arguments(['name'], 1)
-
+        proposal = Proposal(request.args.get('name'))
+        proposal.act()
+        return jsonify({'Status': 'Proposal %s acted successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
