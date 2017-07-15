@@ -32,11 +32,11 @@
 		</div>
 		<div ng-click="show = !show" class="add-proposal-header">+ Add new proposal</div>
 		<div ng-show="show" class="new-proposal">
-		<form name="proposalForm" ng-submit="AddProposal(proposal)">
+		<form name="proposalForm" ng-submit="addProposal(proposal)">
 		 <div class="proposal-form-item"><span class="proposal-label">NAME:</span> <input type="text" name="proposal-name" ng-model="proposal.name"></div>
 		  <div class="proposal-form-item"><span class="proposal-label">STOCK:</span> <input type="text" name="proposal-stock" ng-model="proposal.stock"></div>
 		  <div class="proposal-form-item"><span class="proposal-label">SHARES:</span> <input type="text" name="proposal-shares"></div>
-		  <button class="proposal-button" type="submit">SUBMIT</button>
+		  <button class="proposal-button" type="submit">SUBMIT</div>
 		</form>
 		</div>
 	</div>

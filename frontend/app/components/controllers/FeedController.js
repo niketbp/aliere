@@ -7,7 +7,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 	//$scope.id = $routeParams.id;
 
 	$scope.addProposal = function(proposal) {
-		data = {
+		const data = {
 			name: proposal.name,
 			ticker: proposal.stock,
 			shares: proposal.shares,
