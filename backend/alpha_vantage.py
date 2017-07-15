@@ -1,16 +1,16 @@
 import requests
 
-ALPHA_VANTAGE_KEY = '9YI4'
 
-class AlphaVantage():
+class AlphaVantage:
 
     def __init__(self):
         self.__BASE_URL = 'https://www.alphavantage.co/query?'
+        self.__API_KEY = '9YI4'
 
-    def get_ticker_data(self, symbol):
+    def get_ticker_data(self, ticker):
         function = 'function=TIME_SERIES_DAILY'
-        symbol = 'symbol=' + symbol
-        api_key = 'apikey=' + ALPHA_VANTAGE_KEY
+        symbol = 'symbol=' + ticker
+        api_key = 'apikey=' + self.__API_KEY
 
         params = '&'.join([function, symbol, api_key])
 
@@ -20,7 +20,6 @@ class AlphaVantage():
         content = r.json()
         most_recent = content['Meta Data']['3. Last Refreshed']
         most_recent_stock_data = content['Time Series (Daily)'][most_recent]
-
 
         return {
             'open': most_recent_stock_data['1. open'],

@@ -16,7 +16,7 @@ def validate_arguments(args, num_args):
 
 @app.route("/")
 def hello():
-    return("Hello World!")
+    return "Hello World!"
 
 
 @app.route("/user/add")
@@ -38,7 +38,7 @@ def user_add():
 # def proposal():
 
 
-@app.route("/stock")
+@app.route("/stock", methods=['GET'])
 def stock():
     try:
         validate_arguments('ticker', 1)
