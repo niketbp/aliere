@@ -22,11 +22,14 @@ class Proposal():
         db.users.update_one({'username': username}, {'$push': {'proposals': id}})
         db.funds.update_one({'fundName': fund}, {'$push': {'proposals': id}})
 
-    def act(self):
-        self.delete()
+    def act(self, username, fund_name):
+        self.delete(username, fund_name)
 
     def update(self):
         pass
 
-    def delete(self):
+    def delete(self, username, fund_name):
+        id = db.proposals.find_one({'proposalName': self.name})['_id']
+        db.users.update_one({'username': username}, {'$pop': {'proposals': id}})
+        db.funds.update_one({'fundName': fund_name}, {'$pop': {'proposals': id}})
         db.proposals.delete_one({"proposalName": self.name})
