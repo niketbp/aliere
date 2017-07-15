@@ -1,1 +1,1 @@
-a;a;a
+ALPHA_VANTAGE_KEY = '9YI4'
