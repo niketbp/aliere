@@ -20,7 +20,7 @@ angular.module('aliereApp.login', ['ngRoute'])
 	init();
 
   function onSuccess(googleUser) {
-  	$scope.name = googleUser.getBasicProfile().getName();
+  	window.localStorage.setItem("username", googleUser.getBasicProfile().getName());
     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
   }
 
@@ -42,7 +42,6 @@ angular.module('aliereApp.login', ['ngRoute'])
   window.renderButton = renderButton;
 
   $scope.signOut = function(googleUser) {
-  	console.log('hi');
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
     	window.localStorage.removeItem("username");
