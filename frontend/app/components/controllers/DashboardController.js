@@ -5,25 +5,24 @@
 
 'use strict';
 
-angular.module('aliereApp.home', ['ngRoute'])
+angular.module('aliereApp.dashboard', ['ngRoute'])
 
 // Routing configuration for this module
 .config(['$routeProvider',function($routeprovider){
-	$routeprovider.when('/', {
-		controller: 'HomeController',
-		templateUrl: 'components/views/homeView.html'
+	$routeprovider.when('/dashboard', {
+		controller: 'DashboardController',
+		templateUrl: 'components/views/dashboardView.html'
 	});
 }])
 
 // Controller definition for this module
-.controller('HomeController', ['$scope', function($scope) {
-
+.controller('DashboardController', ['$scope', function($scope) {
 	init();
 
 	function init(){
-
+		console.log('hey dashboard');
 	};
 
-	this.message = "Hello Home!";
+	this.message = "Hello Dashboard!";
 
 }]);

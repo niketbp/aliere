@@ -3,25 +3,33 @@ from globals import db
 
 class Proposal():
 
-    def __init__(self, ticker, num_votes, num_shares, transaction_type):
-        self.ticker = ticker
-        self.num_votes = num_votes
-        self.num_shares = num_shares
-        self.transaction_type = transaction_type
+    def __init__(self, name):
+        self.name = name
 
-    def create(self, username, fund):
-        result = {
-            "numVotes": self.num_votes,
-            "ticker": self.ticker,
-            "numShares": self.num_shares,
-            "transactionType": self.transaction_type.upper()
+    def create(self, username, fund, ticker, num_votes, num_shares, transaction_type):
+        existing_proposal = db.proposals.find_one({"proposalName": self.name})
+        if existing_proposal:
+            raise Exception("Proposal already exists")
+
+        entry = {
+            "proposalName": self.name,
+            "numVotes": num_votes,
+            "ticker": ticker,
+            "numShares": num_shares,
+            "transactionType": transaction_type.upper()
         }
-        id = db.proposals.insert_one(result).inserted_id
+        id = db.proposals.insert_one(entry).inserted_id
         db.users.update_one({'username': username}, {'$push': {'proposals': id}})
         db.funds.update_one({'fundName': fund}, {'$push': {'proposals': id}})
+
+    def act(self, username, fund_name):
+        self.delete(username, fund_name)
 
     def update(self):
         pass
 
-    def delete(self):
-        pass
+    def delete(self, username, fund_name):
+        id = db.proposals.find_one({'proposalName': self.name})['_id']
+        db.users.update_one({'username': username}, {'$pop': {'proposals': id}})
+        db.funds.update_one({'fundName': fund_name}, {'$pop': {'proposals': id}})
+        db.proposals.delete_one({"proposalName": self.name})
