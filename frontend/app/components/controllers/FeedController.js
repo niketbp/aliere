@@ -15,16 +15,17 @@ angular.module('aliereApp.feed', ['ngRoute'])
 			user: window.localStorage.getItem('username'),
 			fund: 'Leo',// testing
 		};
+		console.log(data);
 
 		$http({
-			method: 'POST',
+			method: 'GET',
 			data: data,
 			url: 'http://127.0.0.1:5000/proposal/create'
 		}).then(function successfulCallback(response) {
 			//reload feed
-
+		console.log(response)
 		}, function(response) {
-
+			console.log(response)
 		});
 	};
 
