@@ -6,6 +6,18 @@
 	color: #FFFFFF;
 }
 
+.fund-detail-header {
+	display: flex;
+	align-items: center;
+}
+
+.fund-value-header {
+	font-size: 24px;
+	color: #23F4BD;
+	letter-spacing: 3px;
+	margin-left: 10px;
+}
+
 .fund-detail-wrapper {
 	width: calc(100% - 280px);
 	min-width: 300px;
