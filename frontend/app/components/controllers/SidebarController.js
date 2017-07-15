@@ -6,7 +6,7 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 .controller('SidebarController', ['$scope', '$http', function($scope, $http) {
 
 	getUserData();
-	leaveFund();
+	//leaveFund();
 	//getFundData();
 	//console.log(window.localStorage.getItem('full-name'));
 	$scope.fullname = window.localStorage.getItem('full-name');
@@ -42,7 +42,7 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 	function leaveFund() {
 		$http( {
 			method: 'GET',
-			url: 'http://127.0.0.1:5000/fund/leave?name=Neptune&username=' + window.localStorage.getItem('username')
+			url: 'http://127.0.0.1:5000/fund/leave?name=Voyager&username=' + window.localStorage.getItem('username')
 		}).then(function success(response) {
 			console.log(response);
 		}, function error(response) {
