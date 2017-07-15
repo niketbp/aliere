@@ -9,11 +9,14 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 	getFundData();
 	//console.log(window.localStorage.getItem('full-name'));
 	$scope.fullname = window.localStorage.getItem('full-name');
+	$scope.userID = window.localStorage.getItem('username');
+
+	console.log(window.localStorage.getItem('username'));
 
 	function getUserData() {
 		$http( {
 			method: 'GET',
-			url: 'http://127.0.0.1:5000/user/data?user=tylersco'
+			url: 'http://127.0.0.1:5000/user/data?user=' + window.localStorage.getItem('username')
 		}).then(function success(response) {
 			$scope.userData = response;
 			console.log(response);
@@ -34,20 +37,5 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 			console.log(response);
 		});
 	}
-
-	function init(){
-		$http( {
-			method: 'GET',
-			url: 'http://127.0.0.1:5000/user/data?user=jerrygong'
-		}).then(function successCallback(response) {
-			$scope.data = response;
-			console.log($scope.data);
-			console.log($scope.data.data.playerFunds);
-		}, function errorCallback(response) {
-			console.log(response);
-		});
-	};
-
-	this.message = "Hello Home!";
 
 }]);
