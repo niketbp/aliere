@@ -1,13 +1,11 @@
 from flask import Flask
 from flask import request, jsonify
-from flask_pymongo import PyMongo
 from fund import Fund
 from proposal import Proposal
 from stock import get_ticker_data
 from user import User
 
 app = Flask(__name__)
-mongo = PyMongo(app)
 
 
 def validate_arguments(args, num_args):
@@ -26,20 +24,22 @@ def hello():
 @app.route("/user/create")
 def user_create():
     try:
-        validate_arguments('user', 1)
-        user = User(request.args.get('user'))
+        validate_arguments(['user'], 1)
+        user = User(request.args.get('user'), 0)
         user.create()
+        return jsonify({'Status': 'User added successfully'})
     except Exception as e:
-        return jsonify({'Error:', str(e)})
+        return jsonify({'Error': str(e)})
 
-@app.route("/user/update")
-def user_update():
+
+@app.route("/user/data")
+def user_data():
     try:
         validate_arguments('user', 1)
-        user = User(request.args.get('user'))
-        user.update()
+
     except Exception as e:
-        return jsonify({'Error:', str(e)})
+        return jsonify({'Error': str(e)})
+
 
 @app.route("/user/delete")
 def user_delete():
@@ -48,23 +48,44 @@ def user_delete():
         user = User(request.args.get('user'))
         user.delete()
     except Exception as e:
-        return jsonify({'Error:', str(e)})
+        return jsonify({'Error': str(e)})
 
-@app.route("/user/data")
-def user_data():
+
+@app.route("/user/update")
+def user_update():
     try:
         validate_arguments('user', 1)
-
+        user = User(request.args.get('user'))
+        user.update()
     except Exception as e:
-        return jsonify({'Error:', str(e)})
-
-@app.route("/proposal/add")
-def proposal():
-    try:
-        validate_arguments()
-
-    except Exception as e:
-        return jsonify({'Error:', str(e)})
+        return jsonify({'Error': str(e)})
+#
+#
+# @app.route("/proposal/act")
+# def proposal():
+#     try:
+#         validate_arguments()
+#
+#     except Exception as e:
+#         return jsonify({'Error:', str(e)})
+#
+#
+# @app.route("/proposal/add")
+# def proposal():
+#     try:
+#         validate_arguments()
+#
+#     except Exception as e:
+#         return jsonify({'Error:', str(e)})
+#
+#
+# @app.route("/proposal/delete")
+# def proposal():
+#     try:
+#         validate_arguments()
+#
+#     except Exception as e:
+#         return jsonify({'Error:', str(e)})
 
 
 @app.route("/stock", methods=['GET'])
