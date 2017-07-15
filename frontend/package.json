@@ -25,7 +25,4 @@
         "preprotractor": "npm run update-webdriver",
         "protractor": "protractor e2e-tests/protractor.conf.js"
     },
-    "dependencies": {
-        "angular-chart.js": "^1.1.1"
-    }
 }

@@ -29,7 +29,5 @@ angular.module('aliereApp.feed', ['ngRoute'])
 		shares: '100 shares'
 	}
 	];
-
-	$scope.
 }]);
 
