@@ -85,9 +85,9 @@ def user_update():
 @app.route("/proposal/act", methods=['GET'])
 def proposal_act():
     try:
-        validate_arguments(['name'], 1)
+        validate_arguments(['name', 'username', 'fund_name'], 3)
         proposal = Proposal(request.args.get('name'))
-        proposal.act()
+        proposal.act(request.args.get('username'), request.args.get('fund_name'))
         return jsonify({'Status': 'Proposal %s acted successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -118,9 +118,9 @@ def proposal_data():
 @app.route("/proposal/delete", methods=['DELETE'])
 def proposal_delete():
     try:
-        validate_arguments(['name'], 1)
+        validate_arguments(['name', 'username', 'fund_name'], 3)
         proposal = Proposal(request.args.get('name'))
-        proposal.delete()
+        proposal.delete(request.args.get('username'), request.args.get('fund_name'))
         return jsonify({'Status': 'Proposal %s deleted successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
