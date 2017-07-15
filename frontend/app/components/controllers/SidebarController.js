@@ -6,6 +6,7 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 .controller('SidebarController', ['$scope', '$http', function($scope, $http) {
 
 	getUserData();
+	getOpenFunds();
 	//leaveFund();
 	//getFundData();
 	//console.log(window.localStorage.getItem('full-name'));
@@ -43,6 +44,17 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 		$http( {
 			method: 'GET',
 			url: 'http://127.0.0.1:5000/fund/leave?name=Voyager&username=' + window.localStorage.getItem('username')
+		}).then(function success(response) {
+			console.log(response);
+		}, function error(response) {
+			console.log(response);
+		});
+	}
+
+	function getOpenFunds() {
+		$http({
+			method: 'GET',
+			url: 'http://127.0.0.1:5000/fund/all'
 		}).then(function success(response) {
 			console.log(response);
 		}, function error(response) {
