@@ -4,8 +4,23 @@ angular.module('aliereApp.feed', ['ngRoute'])
 // Controller definition for this module
 .controller('FeedController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
-	//$scope.id = $routeParams.id;
+	const fundName = 'Leo';
+	$scope.proposals = [];
 
+	getFundProposals();
+
+	function getFundProposals() {
+		$http({
+			method: 'GET',
+			url: `http://127.0.0.1:5000/fund/data?name=${fundName}`
+		}).then(function successfulCallback(response) {
+			$scope.proposals = response;
+		}).then(function(response){
+			console.log(response);
+		});
+	}
+
+	$scope.proposal
 	$scope.addProposal = function(proposal) {
 		const data = {
 			name: proposal.name,
@@ -22,6 +37,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 			url: `http://127.0.0.1:5000/proposal/create?name=${data.name}&ticker=${data.ticker}&shares=${data.shares}&transaction=${data.transaction}&user=${data.user}&fund=${data.fund}`,
 		}).then(function successfulCallback(response) {
 			//reload feed
+			getFundProposals();
 		console.log(response)
 		}, function(response) {
 			console.log(response)
