@@ -3,6 +3,10 @@
 		<div class="fund-detail-header">
 			<div class="fund-name">Neptune Fund</div>
 			<div class="fund-value-header">$53,115</div>
+			<div class="timer-wrapper">
+				<div class="timer-label">Time to next trade:</div>
+				<div class="timer" ng-include="'components/views/timerView.html'" ng-controller="TimerController"></div>
+			</div>
 		</div>
 		<div class="fund-graph">
 			<img src="img/graph.svg">

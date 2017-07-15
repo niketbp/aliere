@@ -9,13 +9,13 @@
 .fund-detail-header {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .fund-value-header {
 	font-size: 24px;
 	color: #23F4BD;
 	letter-spacing: 3px;
-	margin-left: 10px;
 }
 
 .fund-detail-wrapper {
@@ -130,6 +130,20 @@ input[type=submit] {
 
 .arrow-button {
 	cursor: pointer;
+}
+
+.timer-wrapper {
+	margin-right: 20px;
+}
+
+.timer {
+	font-size: 18px;
+	letter-spacing: 2px;
+	margin-left: 60px;
+}
+
+.timer-label {
+	font-size: 14px;
 }
 
 .add-proposal-header {
