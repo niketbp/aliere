@@ -106,7 +106,7 @@ def proposal_delete():
 
 
 @app.route("/proposal/downvote", methods=['GET'])
-def proposal_create():
+def proposal_downvote():
     try:
         validate_arguments(['name'], 1)
         proposal = Proposal(request.args.get('name'))
@@ -117,7 +117,7 @@ def proposal_create():
 
 
 @app.route("/proposal/upvote", methods=['GET'])
-def proposal_create():
+def proposal_upvote():
     try:
         validate_arguments(['name'], 1)
         proposal = Proposal(request.args.get('name'))
