@@ -1,7 +1,11 @@
 from flask import Flask
 from flask import request, jsonify
 from flask_pymongo import PyMongo
-from globals import alpha_vantage
+from fund import Fund
+from proposal import Proposal
+from stock import get_ticker_data
+from user import User
+
 app = Flask(__name__)
 mongo = PyMongo(app)
 
@@ -19,31 +23,56 @@ def hello():
     return("Hello World!")
 
 
-@app.route("/user/add")
-def user_add():
-    validate_arguments('user', 1)
-    username = request.args.get('user')
-    # store user in db
+@app.route("/user/create")
+def user_create():
+    try:
+        validate_arguments('user', 1)
+        user = User(request.args.get('user'))
+        user.create()
+    except Exception as e:
+        return jsonify({'Error:', str(e)})
 
-#
-# @app.route("/user/update")
-# def user_update():
-#
-#
-# @app.route("/user/data")
-# def user_data():
-#
-#
-# @app.route("/proposal/add")
-# def proposal():
+@app.route("/user/update")
+def user_update():
+    try:
+        validate_arguments('user', 1)
+        user = User(request.args.get('user'))
+        user.update()
+    except Exception as e:
+        return jsonify({'Error:', str(e)})
+
+@app.route("/user/delete")
+def user_delete():
+    try:
+        validate_arguments('user', 1)
+        user = User(request.args.get('user'))
+        user.delete()
+    except Exception as e:
+        return jsonify({'Error:', str(e)})
+
+@app.route("/user/data")
+def user_data():
+    try:
+        validate_arguments('user', 1)
+
+    except Exception as e:
+        return jsonify({'Error:', str(e)})
+
+@app.route("/proposal/add")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error:', str(e)})
 
 
-@app.route("/stock")
+@app.route("/stock", methods=['GET'])
 def stock():
     try:
         validate_arguments('ticker', 1)
         ticker = request.args.get('ticker')
-        return jsonify(alpha_vantage.get_ticker_data(ticker))
+        return jsonify(get_ticker_data(ticker))
     except Exception as e:
         return jsonify({'Error:', str(e)})
 
