@@ -13,10 +13,11 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 	function getUserData() {
 		$http( {
 			method: 'GET',
-			url: 'http://127.0.0.1:5000/user/data?user=richardli'
+			url: 'http://127.0.0.1:5000/user/data?user=tylersco'
 		}).then(function success(response) {
 			$scope.userData = response;
 			console.log(response);
+			console.log(response.data.investorFunds[0].fundName);
 		}, function error(response) {
 			console.log(response);
 		});
