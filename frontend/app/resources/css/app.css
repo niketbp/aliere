@@ -1,51 +1,39 @@
-/* app css stylesheet */
+html,body { 
+	margin: 0px;
+	font-family: 'Open Sans', sans-serif;
+} 
 
-body {
-  font-family: Helvetica;
-  font-size: 14px;
+.navbar { 
+	height: 56px;
+	background: #002F30;
+	display: flex;
+	justify-content: space-between;
 }
 
-.menu {
-  margin: 0 auto;
-  width:350px;
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  padding: 0 0 0.5em;
+.logo-wrapper {
+	display: flex;
+	align-items: center;
+	padding-left: 15px; 
 }
 
-.menu:before {
-  content: "[";
+.app-name { 
+	font-size: 30px;
+	color: #FFFFFF;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	padding-left: 15px; 
 }
 
-.menu:after {
-  content: "]";
+.navbar-link-wrapper {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	margin-right: 15px;
 }
 
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
-.center{
-  margin: 0 auto;
-  width:350px;
-  padding-top: 6px;
-}
-
-form { 
-margin: 0 auto; 
-width:220px;
-}
-
-input{
-  float: right;
-  height: 10px;
+.navbar-link { 
+	padding: 10px;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-transform: uppercase;
 }

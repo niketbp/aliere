@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mostPopularListingsApp" class="no-js">
+<html lang="en" ng-app="aliereApp" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Aliere</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="resources/css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
   <!-- <base href="/"> -->
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="/">Home</a></li>
-    <li><a href="#/about">About</a></li>
-    <li><a href="#/login">Login</a></li>
-  </ul>
-
+  <div class="navbar">
+    <div class="logo-wrapper">
+      <img src="img/aliere-logo.svg"> 
+      <div class="app-name">Aliere</div>
+    </div>
+    <div class="navbar-link-wrapper">
+      <div class="navbar-link">About</div>
+      <div class="navbar-link">Log out</div>
+    </div>
+  </div>
   <div ng-view></div>
 
   <!-- In production use:
@@ -24,7 +29,6 @@
   <script src="resources/bower/angular/angular.js"></script>
   <script src="resources/bower/angular-route/angular-route.min.js"></script>
   <script src="app.js"></script>
-  <script src="components/controllers/AboutController.js"></script>
   <script src="components/controllers/HomeController.js"></script>
   <script src="components/controllers/LoginController.js"></script>
 
