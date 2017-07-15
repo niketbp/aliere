@@ -41,7 +41,8 @@ angular.module('aliereApp.login', ['ngRoute'])
   }
 
   function onSuccess(googleUser) {
-  	window.localStorage.setItem("username", googleUser.getBasicProfile().getName());
+  	window.localStorage.setItem("full-name", googleUser.getBasicProfile().getName());
+    window.localStorage.setItem("username", googleUser.getBasicProfile().getId());
   	$rootScope.logout = true;
   	//window.localStorage.setItem("auth", JSON.stringify(gapi.auth2));
   	$window.location.href = "/#/dashboard";

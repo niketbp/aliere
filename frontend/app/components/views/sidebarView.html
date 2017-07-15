@@ -3,23 +3,26 @@
         <img src="img/user-icon.svg">
     </div>
     <!-- TODO: put in real values for these -->
-    <div class="profile-name">JOHN DOE</div>
+    <div class="profile-name">{{ fullname }}</div>
     <div class="profile-balance">$10.00</div>
     <div class="funds-label">MY FUNDS</div>
     <div class="my-funds">
         <!-- TODO: for each loop here for funds -->
-        <div class="fund">
+        <div class="fund" ng-repeat="fund in userData.data.investorFunds">
             <!-- TODO: put in real values for these -->
-            <div class="fund-name-sidebar">NEPTUNE FUND</div>
+            <div class="fund-name-sidebar">{{ fund.fundName }}</div>
             <div class="fund-value">$53,115</div>
         </div>
     <div class="funds-label">JOIN OTHER FUNDS</div>
     </div>
     <div class="join-fund">
         <div>
-        <div class="fund-name-sidebar light">VOYAGER FUND</div>
+        <div class="fund-name-sidebar light">NEPTUNE FUND</div>
         <div class="fund-value light">$175,000</div>
         </div>
         <div class="add-fund light">+</div>
     </div>
 </div>
+
+<script>
+</script>
