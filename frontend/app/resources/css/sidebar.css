@@ -1,0 +1,100 @@
+.sidebar {
+    background: #001D1E;
+    height: 100%;
+    width: 270px;
+    margin: 0px;
+}
+
+.picture {
+    background: white;
+    height: 62px;
+    width: 62px;
+    border-radius: 50%;
+    position: relative;
+    top: 23px;
+    left: 19px;
+}
+
+.profile-name {
+    height: 22px;
+    width: 120px;
+    font-family: ProximaNova-Regular;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 3px;
+    top: 87px;
+    left: 98px;
+    position: absolute;
+}
+
+.profile-balance {
+    height: 17px;
+    width: 151px;
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    top: 113px;
+    left: 98px;
+    position: absolute;
+}
+
+.funds-label {
+    height: 22px;
+    width: 130px;
+    position: absolute;
+    top: 170px;
+    left: 16px;
+    font-family: ProximaNova-Regular;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 3px;
+}
+
+.my-funds {
+    top: 200px;
+    position: absolute;
+}
+
+.fund {
+    width: 270px;
+    height: 82px;
+    background: #004242;
+    border-bottom: 1px solid #979797;
+    border-top: 1px solid #979797;
+}
+
+.fund-name {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 3px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+.fund-value {
+    font-family: ProximaNova-Regular;
+    font-size: 14px;
+    color: #FFFFFF;
+    letter-spacing: 3px;
+    position: relative;
+    top: 30px;
+    left: 20px;
+}
+
+.add-funds {
+    opacity: 0.5;
+    font-family: ProximaNova-Regular;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+}
+
+
+
+
