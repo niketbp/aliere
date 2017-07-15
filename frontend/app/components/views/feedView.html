@@ -27,12 +27,12 @@
 
 			<div class="proposal" ng-repeat="proposal in proposals">
 				<div class="proposal-votes">
-					<img src="img/up-arrow.svg" ng-click="incrementVote('MSFT')" class="arrow-button">
+					<img src="img/up-arrow.svg" ng-click="proposal.numVotes = proposal.numVotes + 1" class="arrow-button">
 					<div class="num-votes">{{proposal.numVotes}}</div>
-					<img src="img/down-arrow.svg" ng-click="decrementVote('MSFT')" class="arrow-button">
+					<img src="img/down-arrow.svg" ng-click="proposal.numVotes = proposal.numVotes - 1" class="arrow-button">
 				</div>
-				<div class="proposal-name">{{proposal.name}}</div>
-				<div class="proposal-value">+{{proposal.shares}} shares</div>
+				<div class="proposal-name">{{proposal.ticker}}</div>
+				<div class="proposal-value">+{{proposal.numShares}} shares</div>
 			</div>
 
 		</div>

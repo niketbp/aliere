@@ -6,6 +6,8 @@ angular.module('aliereApp.feed', ['ngRoute'])
 
 	const fundName = 'Leo';
 	$scope.proposals = [];
+	$scope.votes = {};
+	$scope.userVotes = {};
 
 	getFundProposals();
 
@@ -14,13 +16,14 @@ angular.module('aliereApp.feed', ['ngRoute'])
 			method: 'GET',
 			url: `http://127.0.0.1:5000/fund/data?name=${fundName}`
 		}).then(function successfulCallback(response) {
-			$scope.proposals = response;
-		}).then(function(response){
+			$scope.proposals = response.data.proposals;
+			console.log(response);
+		}, function(response){
 			console.log(response);
 		});
 	}
 
-	$scope.proposal
+
 	$scope.addProposal = function(proposal) {
 		const data = {
 			name: proposal.name,
@@ -43,6 +46,18 @@ angular.module('aliereApp.feed', ['ngRoute'])
 			console.log(response)
 		});
 	};
+
+	function updateTickerTable() {
+		for (let i = 0; i < $scope.proposals.length; i++) {
+			$scope.votes[$scope.proposals[i].ticker] = $scope.proposals[i].numVotes;
+		}
+	}
+
+	/*function updateUserVoteTable() {
+		for (let i = 0; i < $scope.proposals.length; i++) {
+			$scope.userVotes[$scope.proposals[i].ticker] = 0;
+		}
+	}*/
 
 	$scope.votes = {
 		'MSFT': 85,
@@ -71,17 +86,20 @@ angular.module('aliereApp.feed', ['ngRoute'])
 	];
 
 	$scope.incrementVote = function(key) {
-		if ($scope.userVotes[key] < 1) {
+/*		if ($scope.userVotes[key] < 1) {
 			$scope.votes[key] += 1;
 			$scope.userVotes[key] += 1;
-		}
+		}*/
+		key++;
+		//$scope.votes[key]++;
 	};
 
 	$scope.decrementVote = function(key) {
-		if ($scope.userVotes[key] > 0) {
+/*		if ($scope.userVotes[key] > 0) {
 			$scope.votes[key] -= 1;
 			$scope.userVotes[key] -= 1;
-		}
+		}*/
+		key--;
 	};
 }]);
 

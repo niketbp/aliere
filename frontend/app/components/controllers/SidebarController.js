@@ -5,8 +5,9 @@ angular.module('aliereApp.sidebar', ['ngRoute'])
 // Controller definition for this module
 .controller('SidebarController', ['$scope', '$http', function($scope, $http) {
 
+	$scope.userData = {};
 	getUserData();
-	getFundData();
+	//getFundData();
 	//console.log(window.localStorage.getItem('full-name'));
 	$scope.fullname = window.localStorage.getItem('full-name');
 	$scope.userID = window.localStorage.getItem('username');
