@@ -13,14 +13,14 @@
             <div class="fund-name-sidebar">{{ fund.fundName }}</div>
             <div class="fund-value">$53,115</div>
         </div>
-    <div class="funds-label">JOIN OTHER FUNDS</div>
+    <div class="funds-label-bot">JOIN OTHER FUNDS</div>
     </div>
     <div class="join-fund">
-        <div>
-        <div class="fund-name-sidebar light">NEPTUNE FUND</div>
+        <div class="open-funds" ng-repeat="fund in openFunds">
+        <div class="fund-name-sidebar light">{{ fund.fundName }}</div>
         <div class="fund-value light">$175,000</div>
+        <div class="add-fund light" ng-click="joinFund(fund.fundName)">+</div>
         </div>
-        <div class="add-fund light" ng-click="joinFund()">+</div>
     </div>
 </div>
 
