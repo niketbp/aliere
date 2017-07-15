@@ -8,7 +8,7 @@
     <div class="funds-label">MY FUNDS</div>
     <div class="my-funds">
         <!-- TODO: for each loop here for funds -->
-        <div class="fund" ng-repeat="fund in userData.data.investorFunds">
+        <div class="fund" ng-repeat="fund in userData.data.playerFunds">
             <!-- TODO: put in real values for these -->
             <div class="fund-name-sidebar">{{ fund.fundName }}</div>
             <div class="fund-value">$53,115</div>
@@ -20,7 +20,7 @@
         <div class="fund-name-sidebar light">NEPTUNE FUND</div>
         <div class="fund-value light">$175,000</div>
         </div>
-        <div class="add-fund light">+</div>
+        <div class="add-fund light" ng-click="joinFund()">+</div>
     </div>
 </div>
 
