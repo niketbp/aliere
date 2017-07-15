@@ -1,9 +1,11 @@
+from bson import ObjectId
 from flask import Flask
 from flask import request, jsonify
 from flask_cors import cross_origin
 import json
 from bson import ObjectId
 from fund import Fund
+import json
 from proposal import Proposal
 from stock import get_ticker_data
 from user import User
@@ -28,6 +30,7 @@ def validate_arguments(args, num_args):
 
 
 @app.route("/user/create", methods=['GET'])
+@cross_origin()
 def user_create():
     try:
         validate_arguments(['user'], 1)
@@ -50,6 +53,7 @@ def user_data():
 
 
 @app.route("/user/delete", methods=['DELETE'])
+@cross_origin()
 def user_delete():
     try:
         validate_arguments(['user'], 1)
@@ -61,6 +65,7 @@ def user_delete():
 
 
 @app.route("/user/update", methods=['GET'])
+@cross_origin()
 def user_update():
     try:
         user = User(request.args.get('user'))
@@ -85,6 +90,7 @@ def user_update():
 
 
 @app.route("/proposal/act", methods=['GET'])
+@cross_origin()
 def proposal_act():
     try:
         validate_arguments(['name', 'username', 'fund_name'], 3)
@@ -96,6 +102,7 @@ def proposal_act():
 
 
 @app.route("/proposal/create", methods=['GET'])
+@cross_origin()
 def proposal_create():
     try:
         validate_arguments(['name', 'ticker', 'shares', 'transaction', 'user', 'fund'], 6)
@@ -108,6 +115,7 @@ def proposal_create():
 
 
 @app.route("/proposal/data", methods=['GET'])
+@cross_origin()
 def proposal_data():
     try:
         validate_arguments(['name'], 1)
@@ -118,6 +126,7 @@ def proposal_data():
 
 
 @app.route("/proposal/delete", methods=['DELETE'])
+@cross_origin()
 def proposal_delete():
     try:
         validate_arguments(['name', 'username', 'fund_name'], 3)
@@ -129,6 +138,7 @@ def proposal_delete():
 
 
 @app.route("/proposal/downvote", methods=['GET'])
+@cross_origin()
 def proposal_downvote():
     try:
         validate_arguments(['name'], 1)
@@ -140,6 +150,7 @@ def proposal_downvote():
 
 
 @app.route("/proposal/upvote", methods=['GET'])
+@cross_origin()
 def proposal_upvote():
     try:
         validate_arguments(['name'], 1)
@@ -151,6 +162,7 @@ def proposal_upvote():
 
 
 @app.route("/fund/create", methods=['GET'])
+@cross_origin()
 def fund_create():
     try:
         validate_arguments(['name', 'username'], 1)
@@ -173,6 +185,7 @@ def fund_data():
 
 
 @app.route("/fund/delete", methods=['DELETE'])
+@cross_origin()
 def fund_delete():
     try:
         validate_arguments(['name'], 1)
@@ -185,6 +198,7 @@ def fund_delete():
 
 
 @app.route("/fund/join", methods=['GET'])
+@cross_origin()
 def fund_join():
     try:
         validate_arguments(['name', 'username'], 2)
@@ -196,6 +210,7 @@ def fund_join():
 
 
 @app.route("/fund/leave", methods=['GET'])
+@cross_origin()
 def fund_leave():
     try:
         validate_arguments(['name', 'username'], 2)
@@ -207,6 +222,7 @@ def fund_leave():
 
 
 @app.route("/stock", methods=['GET'])
+@cross_origin()
 def stock():
     try:
         validate_arguments(['ticker'], 1)

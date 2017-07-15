@@ -4,6 +4,14 @@ angular.module('aliereApp.feed', ['ngRoute'])
 
 // Controller definition for this module
 .controller('FeedController', ['$scope', function($scope) {
+	$scope.votes = {
+		'MSFT': 85,
+	};
+
+	$scope.userVotes = {
+		'MSFT': 0,
+	};
+
 	$scope.currentStocks = [{
 		name: 'AAPL',
 		price: 111.06,
@@ -21,6 +29,5 @@ angular.module('aliereApp.feed', ['ngRoute'])
 		shares: '100 shares'
 	}
 	];
-
 }]);
 
