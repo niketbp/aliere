@@ -1,1 +1,29 @@
-<div>feed</div>
+<div class="feed-container">
+	<div class="fund-detail-wrapper">
+		<div class="fund-name">Neptune Fund</div>
+		<div class="fund-graph">graph</div>
+		<div class="current-stocks-header">Current stocks in fund:</div>
+		<table class="current-stocks-wrapper">
+			<tr ng-repeat="stock in currentStocks" class="current-stock">
+				<td class="stock-name">{{stock.name}}</td>
+				<td class="stock-price">{{stock.price}}</td>
+				<td class="stock-change" ng-class="stock.change>0 ? 'positive' : 'negative'">{{stock.change}}</td>
+				<td class="stock-shares">{{stock.shares}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="current-proposals">
+		<div class="current-proposals-header">Current Proposals</div>
+		<div class="proposals-wrapper">
+			<div class="proposal">
+				<div class="proposal-votes">
+					<img src="img/up-arrow.svg">
+					<div class="num-votes">85</div>
+					<img src="img/down-arrow.svg">
+				</div>
+				<div class="proposal-name">MSFT</div>
+				<div class="proposal-value">+10 shares</div>
+			</div>
+		</div>
+	</div>
+</div>
