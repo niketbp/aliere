@@ -3,14 +3,17 @@ from globals import db
 
 class User():
 
-    def __init__(self, username, score):
+    def __init__(self, username):
         self.username = username
-        self.score = score
 
-    def create(self):
+    def create(self, score):
+        existing_user = db.users.find_one({"username": self.username})
+        if existing_user:
+            raise Exception("Username already exists")
+
         entry = {
             "username": self.username,
-            "score": self.score,
+            "score": score,
             "proposals": [],
             "investorFunds": [],
             "playerFunds": []
