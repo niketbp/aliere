@@ -59,33 +59,69 @@ def user_update():
         user.update()
     except Exception as e:
         return jsonify({'Error': str(e)})
-#
-#
-# @app.route("/proposal/act")
-# def proposal():
-#     try:
-#         validate_arguments()
-#
-#     except Exception as e:
-#         return jsonify({'Error:', str(e)})
-#
-#
-# @app.route("/proposal/add")
-# def proposal():
-#     try:
-#         validate_arguments()
-#
-#     except Exception as e:
-#         return jsonify({'Error:', str(e)})
-#
-#
-# @app.route("/proposal/delete")
-# def proposal():
-#     try:
-#         validate_arguments()
-#
-#     except Exception as e:
-#         return jsonify({'Error:', str(e)})
+
+
+@app.route("/proposal/act")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/proposal/add")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/proposal/delete")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/fund/add")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/fund/delete")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/fund/join")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/fund/leave")
+def proposal():
+    try:
+        validate_arguments()
+
+    except Exception as e:
+        return jsonify({'Error': str(e)})
 
 
 @app.route("/stock", methods=['GET'])
@@ -95,7 +131,7 @@ def stock():
         ticker = request.args.get('ticker')
         return jsonify(get_ticker_data(ticker))
     except Exception as e:
-        return jsonify({'Error:', str(e)})
+        return jsonify({'Error': str(e)})
 
 
 if __name__ == '__main__':
