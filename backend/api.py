@@ -62,7 +62,7 @@ def user_update():
 
 
 @app.route("/proposal/act")
-def proposal():
+def proposal_act():
     try:
         validate_arguments()
 
@@ -71,7 +71,7 @@ def proposal():
 
 
 @app.route("/proposal/add")
-def proposal():
+def proposal_add():
     try:
         validate_arguments()
 
@@ -80,7 +80,7 @@ def proposal():
 
 
 @app.route("/proposal/delete")
-def proposal():
+def proposal_delete():
     try:
         validate_arguments()
 
@@ -89,7 +89,7 @@ def proposal():
 
 
 @app.route("/fund/add")
-def proposal():
+def fund_add():
     try:
         validate_arguments()
 
@@ -98,7 +98,7 @@ def proposal():
 
 
 @app.route("/fund/delete")
-def proposal():
+def fund_delete():
     try:
         validate_arguments()
 
@@ -107,7 +107,7 @@ def proposal():
 
 
 @app.route("/fund/join")
-def proposal():
+def fund_join():
     try:
         validate_arguments()
 
@@ -116,7 +116,7 @@ def proposal():
 
 
 @app.route("/fund/leave")
-def proposal():
+def fund_leave():
     try:
         validate_arguments()
 

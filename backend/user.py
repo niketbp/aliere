@@ -14,10 +14,7 @@ class User():
             "investorFunds": [],
             "playerFunds": []
         }
-        print "Test"
         test = db.users.insert_one(result)
-        print test
-        print "test2"
 
     def update(self):
         pass
