@@ -1,14 +1,14 @@
 <div class="sidebar">
     <div class="picture"></div>
     <!-- TODO: put in real values for these -->
-    <div class="profile-name">JOHN DOE</div>
+    <div class="profile-name">{{ fullname }}</div>
     <div class="profile-balance">$10.00</div>
     <div class="funds-label">MY FUNDS</div>
     <div class="my-funds">
         <!-- TODO: for each loop here for funds -->
-        <div class="fund">
+        <div class="fund" ng-repeat="fund in userData.data.playerFunds">
             <!-- TODO: put in real values for these -->
-            <div class="fund-name-sidebar">NEPTUNE FUND</div>
+            <div class="fund-name-sidebar">{{ fund }}</div>
             <div class="fund-value">$53,115</div>
         </div>
         <div class="add-funds">+ ADD MORE FUNDS</div>

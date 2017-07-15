@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request, jsonify
+from flask_cors import cross_origin
 import json
 from bson import ObjectId
 from fund import Fund
@@ -38,6 +39,7 @@ def user_create():
 
 
 @app.route("/user/data", methods=['GET'])
+@cross_origin()
 def user_data():
     try:
         validate_arguments(['user'], 1)
@@ -160,6 +162,7 @@ def fund_create():
 
 
 @app.route("/fund/data", methods=['GET'])
+@cross_origin()
 def fund_data():
     try:
         validate_arguments(['name'], 1)
