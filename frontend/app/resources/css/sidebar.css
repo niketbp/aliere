@@ -6,7 +6,6 @@
 }
 
 .picture {
-    background: white;
     height: 62px;
     width: 62px;
     border-radius: 50%;
@@ -39,7 +38,6 @@
 
 .funds-label {
     height: 22px;
-    width: 130px;
     position: absolute;
     top: 170px;
     left: 16px;
@@ -57,6 +55,7 @@
     width: 270px;
     height: 82px;
     background: #004242;
+    border-bottom: 1px solid #979797
 }
 
 .fund-name-sidebar {
@@ -77,16 +76,18 @@
     left: 20px;
 }
 
-.add-funds {
-    opacity: 0.5;
-    font-size: 16px;
-    color: #FFFFFF;
-    letter-spacing: 2px;
-    position: relative;
-    top: 20px;
-    left: 20px;
+.join-fund {
+    margin-top: 280px;
+    display: flex;
 }
 
+.add-fund { 
+    margin-left: 60px;
+    margin-top: 30px;
+    font-size: 24px;
+}
 
-
+.light {
+    opacity: 0.5;
+}
 

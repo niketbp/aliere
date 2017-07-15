@@ -107,7 +107,7 @@ input[type=submit] {
 }
 
 .proposal-form-item {
-	margin-left: 25px;
+	margin-left: 20px;
 	margin-bottom: 10px;
 }
 
@@ -126,6 +126,10 @@ input[type=submit] {
 .proposal-button {
 	width:100%;
 	text-align: center;
+}
+
+.arrow-button {
+	cursor: pointer;
 }
 
 .add-proposal-header {

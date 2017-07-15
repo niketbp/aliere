@@ -57,5 +57,19 @@ angular.module('aliereApp.feed', ['ngRoute'])
 		shares: '100 shares'
 	}
 	];
+
+	$scope.incrementVote = function(key) {
+		if ($scope.userVotes[key] < 1) {
+			$scope.votes[key] += 1;
+			$scope.userVotes[key] += 1;
+		}
+	};
+
+	$scope.decrementVote = function(key) {
+		if ($scope.userVotes[key] > -1) {
+			$scope.votes[key] -= 1;
+			$scope.userVotes[key] -= 1;
+		}
+	};
 }]);
 
