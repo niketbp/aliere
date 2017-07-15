@@ -1,6 +1,6 @@
 from globals import db
 
-class Fund():
+class Fund:
 
     def __init__(self, name):
         self.fund_name = name

@@ -1,7 +1,7 @@
 from globals import db
 
 
-class Proposal():
+class Proposal:
 
     def __init__(self, name):
         self.name = name
