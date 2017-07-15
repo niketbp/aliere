@@ -161,6 +161,21 @@ def proposal_upvote():
         return jsonify({'Error': str(e)})
 
 
+@app.route("/fund/all", methods=['GET'])
+@cross_origin()
+def fund_all():
+    try:
+        # validate_arguments([''], 0)
+        fund = Fund('abc')
+        data = fund.find_all()
+        doc = []
+        for document in data:
+            doc.append(document)
+        return jsonify(doc)
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
 @app.route("/fund/create", methods=['GET'])
 @cross_origin()
 def fund_create():

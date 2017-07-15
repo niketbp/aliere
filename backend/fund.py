@@ -27,6 +27,9 @@ class Fund:
         db.users.update_all({}, {'$pull': {'playerFunds': id}})
         db.funds.delete_one({"fundName": self.fund_name})
 
+    def find_all(self):
+        return db.funds.find({})
+
     def join(self, username):
         id = db.funds.find_one({'fundName': self.fund_name})['_id']
         db.users.update_one({'username': username}, {'$push': {'playerFunds': id}})

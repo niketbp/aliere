@@ -45,6 +45,16 @@
     letter-spacing: 3px;
 }
 
+.funds-label-bot {
+    height: 22px;
+    position: absolute;
+    top: 300px;
+    left: 16px;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 3px;
+}
+
 .my-funds {
     top: 200px;
     position: absolute;
@@ -76,8 +86,8 @@
 }
 
 .join-fund {
-    margin-top: 280px;
-    display: flex;
+    margin-top: 400px;
+    display: block;
 }
 
 .add-fund { 
@@ -90,3 +100,6 @@
     opacity: 0.5;
 }
 
+.open-funds {
+    width: 100%;
+}
