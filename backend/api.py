@@ -105,6 +105,28 @@ def proposal_delete():
         return jsonify({'Error': str(e)})
 
 
+@app.route("/proposal/downvote", methods=['GET'])
+def proposal_create():
+    try:
+        validate_arguments(['name'], 1)
+        proposal = Proposal(request.args.get('name'))
+        proposal.downvote()
+        return jsonify({'Status': 'Proposal %s: Vote removed successfully' % proposal.name})
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
+@app.route("/proposal/upvote", methods=['GET'])
+def proposal_create():
+    try:
+        validate_arguments(['name'], 1)
+        proposal = Proposal(request.args.get('name'))
+        proposal.upvote()
+        return jsonify({'Status': 'Proposal %s upvoted successfully' % proposal.name})
+    except Exception as e:
+        return jsonify({'Error': str(e)})
+
+
 @app.route("/fund/create", methods=['GET'])
 def fund_create():
     try:
