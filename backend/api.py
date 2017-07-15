@@ -1,7 +1,9 @@
 from flask import Flask
 from flask import request, jsonify
 from flask_pymongo import PyMongo
-from globals import alpha_vantage
+
+from stock import get_ticker_data
+
 app = Flask(__name__)
 mongo = PyMongo(app)
 
@@ -43,7 +45,7 @@ def stock():
     try:
         validate_arguments('ticker', 1)
         ticker = request.args.get('ticker')
-        return jsonify(alpha_vantage.get_ticker_data(ticker))
+        return jsonify(get_ticker_data(ticker))
     except Exception as e:
         return jsonify({'Error:', str(e)})
 
