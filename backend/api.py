@@ -69,10 +69,11 @@ def proposal_act():
 @app.route("/proposal/create")
 def proposal_create():
     try:
-        validate_arguments(['ticker', 'shares', 'transaction', 'user', 'fund'], 5)
-        proposal = Proposal(request.args.get('ticker'), 0, request.args.get('shares'), request.args.get('transaction'))
-        proposal.create(request.args.get('user'), request.args.get('fund'))
-        return jsonify({'Status': 'Proposal added successfully'})
+        validate_arguments(['name', 'ticker', 'shares', 'transaction', 'user', 'fund'], 6)
+        proposal = Proposal(request.args.get('name'))
+        proposal.create(request.args.get('user'), request.args.get('fund'), request.args.get('ticker'), 0,
+                        request.args.get('shares'), request.args.get('transaction'))
+        return jsonify({'Status': 'Proposal %s added successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
@@ -80,8 +81,10 @@ def proposal_create():
 @app.route("/proposal/delete")
 def proposal_delete():
     try:
-        validate_arguments()
-
+        validate_arguments(['name'], 1)
+        proposal = Proposal(request.args.get('name'))
+        proposal.delete()
+        return jsonify({'Status': 'Proposal %s deleted successfully' % proposal.name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 

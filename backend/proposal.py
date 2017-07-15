@@ -3,18 +3,16 @@ from globals import db
 
 class Proposal():
 
-    def __init__(self, ticker, num_votes, num_shares, transaction_type):
-        self.ticker = ticker
-        self.num_votes = num_votes
-        self.num_shares = num_shares
-        self.transaction_type = transaction_type
+    def __init__(self, name):
+        self.name = name
 
-    def create(self, username, fund):
+    def create(self, username, fund, ticker, num_votes, num_shares, transaction_type):
         result = {
-            "numVotes": self.num_votes,
-            "ticker": self.ticker,
-            "numShares": self.num_shares,
-            "transactionType": self.transaction_type.upper()
+            "proposalName": self.name,
+            "numVotes": num_votes,
+            "ticker": ticker,
+            "numShares": num_shares,
+            "transactionType": transaction_type.upper()
         }
         id = db.proposals.insert_one(result).inserted_id
         db.users.update_one({'username': username}, {'$push': {'proposals': id}})
@@ -24,4 +22,4 @@ class Proposal():
         pass
 
     def delete(self):
-        pass
+        db.proposals.delete_one({"proposalName": self.name})
