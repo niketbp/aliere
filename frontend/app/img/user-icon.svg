@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="63px" height="63px" viewBox="0 0 63 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="31" cy="31" r="31"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.302366395">
+        <g id="Artboard">
+            <g id="Group">
+                <circle id="Oval" fill="#9B9B9B" cx="31" cy="31" r="31"></circle>
+                <g id="Oval-3">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#9B9B9B" xlink:href="#path-1"></use>
+                    <circle stroke="#979797" fill="#D8D8D8" mask="url(#mask-2)" cx="31" cy="62" r="25.7073171"></circle>
+                </g>
+                <circle id="Oval-2" fill="#D8D8D8" cx="31" cy="21.1707317" r="11.3414634"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
