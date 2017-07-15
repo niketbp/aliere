@@ -1,9 +1,4 @@
-<div class="center">
-	<div>AngularJS starter application</div>
-	<div>This is Home View</div>
-	<div id="my-signin2"></div>
-	<p>{{name}}</p>
-<!-- 	<div id="google-sign-in" class="g-signin2" data-onsuccess="onSignIn"></div>
-<p id="yo"></p>-->
-<a href="#" ng-click="signOut()">Sign out</a>
+<div class="container">
+	<div ng-include="'components/views/sidebarView.html'" ng-controller="SidebarController"></div>
+	<div ng-include="'components/views/feedView.html'" ng-controller="FeedController"></div>
 </div>

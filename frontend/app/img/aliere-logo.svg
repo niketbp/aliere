@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="41px" viewBox="0 0 30 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-18.3%" y="-9.0%" width="136.7%" height="128.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="4.37437855%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#00274C" offset="0%"></stop>
+            <stop stop-color="#18E1BC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" fill="url(#linearGradient-2)">
+            <g id="Group-2" filter="url(#filter-1)">
+                <path d="M16.744186,4.45127942 C16.744186,4.45127942 16.744186,1.11876386 20.2325581,1.11876386 C23.7209302,1.11876386 23.7209302,4.45127942 23.7209302,4.45127942 L23.7209302,35.1479104 C23.7209302,35.1479104 23.7209302,38.75007 20.2325581,38.75007 C16.744186,38.75007 16.744186,35.1479104 16.744186,35.1479104 L16.744186,4.45127942 Z" id="Rectangle" transform="translate(20.232558, 19.934417) rotate(-20.000000) translate(-20.232558, -19.934417) "></path>
+                <path d="M6.22933063,4.27643983 C6.22933063,4.27643983 6.22933063,0.94392427 9.71770273,0.94392427 C13.2060748,0.94392427 13.2060748,4.27643983 13.2060748,4.27643983 L13.2060748,34.9730708 C13.2060748,34.9730708 13.2060748,38.5752304 9.71770273,38.5752304 C6.22933063,38.5752304 6.22933063,34.9730708 6.22933063,34.9730708 L6.22933063,4.27643983 Z" id="Rectangle-Copy" transform="translate(9.717703, 19.759577) scale(1, -1) rotate(-20.000000) translate(-9.717703, -19.759577) "></path>
+            </g>
+        </g>
+    </g>
+</svg>
