@@ -128,6 +128,10 @@ input[type=submit] {
 	text-align: center;
 }
 
+.arrow-button {
+	cursor: pointer;
+}
+
 .add-proposal-header {
 	opacity: 0.5;
 	font-size: 16px;
