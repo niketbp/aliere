@@ -27,5 +27,13 @@
 				<div class="proposal-value">+10 shares</div>
 			</div>
 		</div>
+		<div ng-click="show = !show" class="add-proposal-header">+ Add new proposal</div>
+		<div ng-show="show" class="new-proposal">
+		<form action="/action_page.php">
+		  <div class="proposal-form-item"><span class="proposal-label">STOCK:</span> <input type="text" name="proposal-stock"></div>
+		  <div class="proposal-form-item"><span class="proposal-label">SHARES:</span> <input type="text" name="proposal-shares"></div>
+		  <div class="proposal-button"><input type="submit" value="SUBMIT"></div>
+		</form>
+		</div>
 	</div>
 </div>
