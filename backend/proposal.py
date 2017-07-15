@@ -42,4 +42,7 @@ class Proposal:
         db.proposals.delete_one({"proposalName": self.name})
 
     def get_data(self):
-        pass
+        results = db.proposals.find_one({"proposalName": self.name})
+        if not results:
+            raise Exception('Invalid proposal name')
+        return results

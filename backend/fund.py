@@ -1,5 +1,6 @@
 from globals import db
 
+
 class Fund:
 
     def __init__(self, name):
@@ -35,4 +36,7 @@ class Fund:
         db.users.update_one({'username': username}, {'$pop': {'playerFunds': id}})
 
     def get_data(self):
-        pass
+        results = db.funds.find_one({"fundName": self.fund_name})
+        if not results:
+            raise Exception('Invalid fund name')
+        return results

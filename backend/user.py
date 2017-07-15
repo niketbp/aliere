@@ -37,5 +37,5 @@ class User:
     def get_data(self):
         results = db.users.find_one({"username": self.username})
         if not results:
-            raise Exception('Invalid user')
+            raise Exception('Invalid username')
         return results
