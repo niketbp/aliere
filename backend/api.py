@@ -51,7 +51,7 @@ def user_delete():
 def user_update():
     try:
         validate_arguments(['user'], 1)
-        user = User(request.args.get('user'), 0)
+        user = User(request.args.get('user'))
         user.update()
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -95,9 +95,9 @@ def proposal_delete():
 def fund_create():
     try:
         validate_arguments(['name', 'username'], 1)
-        fund = Fund(request.args.get('name'), request.args.get('username'))
-        fund.create()
-        return jsonify({'Status': 'Fund %s created successfully' % fund.name})
+        fund = Fund(request.args.get('name'))
+        fund.create(request.args.get('username'))
+        return jsonify({'Status': 'Fund %s created successfully' % fund.fund_name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
@@ -106,6 +106,9 @@ def fund_create():
 def fund_delete():
     try:
         validate_arguments(['name'], 1)
+        fund = Fund(request.args.get('name'))
+        fund.delete()
+        return jsonify({'Status': 'Fund %s deleted successfully' % fund.fund_name})
 
     except Exception as e:
         return jsonify({'Error': str(e)})
@@ -115,7 +118,9 @@ def fund_delete():
 def fund_join():
     try:
         validate_arguments(['name', 'username'], 2)
-
+        fund = Fund(request.args.get('name'))
+        fund.join(request.args.get('username'))
+        return jsonify({'Status': 'Fund %s joined successfully' % fund.fund_name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
@@ -124,7 +129,9 @@ def fund_join():
 def fund_leave():
     try:
         validate_arguments(['name', 'username'], 2)
-
+        fund = Fund(request.args.get('name'))
+        fund.leave(request.args.get('username'))
+        return jsonify({'Status': 'Fund %s left successfully' % fund.fund_name})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
