@@ -22,6 +22,9 @@ class Proposal():
         db.users.update_one({'username': username}, {'$push': {'proposals': id}})
         db.funds.update_one({'fundName': fund}, {'$push': {'proposals': id}})
 
+    def act(self):
+        self.delete()
+
     def update(self):
         pass
 
