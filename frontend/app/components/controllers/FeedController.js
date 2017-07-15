@@ -62,7 +62,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 	};
 
 	$scope.decrementVote = function(key) {
-		if ($scope.userVotes[key] > -1) {
+		if ($scope.userVotes[key] > 0) {
 			$scope.votes[key] -= 1;
 			$scope.userVotes[key] -= 1;
 		}
