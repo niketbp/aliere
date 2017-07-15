@@ -52,7 +52,7 @@ def user_data():
         return jsonify({'Error': str(e)})
 
 
-@app.route("/user/delete", methods=['DELETE'])
+@app.route("/user/delete", methods=['GET'])
 @cross_origin()
 def user_delete():
     try:
@@ -125,7 +125,7 @@ def proposal_data():
         return jsonify({'Error': str(e)})
 
 
-@app.route("/proposal/delete", methods=['DELETE'])
+@app.route("/proposal/delete", methods=['GET'])
 @cross_origin()
 def proposal_delete():
     try:
@@ -184,7 +184,7 @@ def fund_data():
         return jsonify({'Error': str(e)})
 
 
-@app.route("/fund/delete", methods=['DELETE'])
+@app.route("/fund/delete", methods=['GET'])
 @cross_origin()
 def fund_delete():
     try:
