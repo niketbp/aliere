@@ -16,11 +16,6 @@ def validate_arguments(args, num_args):
             raise Exception("Incorrect argument %s provided" % arg)
 
 
-@app.route("/")
-def hello():
-    return "Hello World!"
-
-
 @app.route("/user/create")
 def user_create():
     try:
@@ -70,11 +65,13 @@ def proposal_act():
         return jsonify({'Error': str(e)})
 
 
-@app.route("/proposal/add")
-def proposal_add():
+@app.route("/proposal/create")
+def proposal_create():
     try:
-        validate_arguments()
-
+        validate_arguments(['ticker', 'shares', 'transaction', 'user', 'fund'], 5)
+        proposal = Proposal(request.args.get('ticker'), 0, request.args.get('shares'), request.args.get('transaction'))
+        proposal.create(request.args.get('user'), request.args.get('fund'))
+        return jsonify({'Status': 'Proposal added successfully'})
     except Exception as e:
         return jsonify({'Error': str(e)})
 
