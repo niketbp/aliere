@@ -1,0 +1,39 @@
+html,body { 
+	margin: 0px;
+	font-family: 'Open Sans', sans-serif;
+} 
+
+.navbar { 
+	height: 56px;
+	background: #002F30;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo-wrapper {
+	display: flex;
+	align-items: center;
+	padding-left: 15px; 
+}
+
+.app-name { 
+	font-size: 30px;
+	color: #FFFFFF;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	padding-left: 15px; 
+}
+
+.navbar-link-wrapper {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	margin-right: 15px;
+}
+
+.navbar-link { 
+	padding: 10px;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-transform: uppercase;
+}
