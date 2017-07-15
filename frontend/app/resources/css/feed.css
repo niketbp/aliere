@@ -1,0 +1,65 @@
+.feed-container {
+	display: flex;
+	width: calc(100vw - 270px);
+	height: 100%;
+	background-color: #121212;
+	color: #FFFFFF;
+}
+
+.fund-detail-wrapper {
+	width: calc(100% - 280px);
+	min-width: 300px;
+}
+
+.fund-name {
+	font-size: 24px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin: 13px;
+}
+
+.fund-graph {
+	background-color: #1D1D1D;
+	height: 300px;
+}
+
+.current-stocks-header {
+	font-size: 18px;
+	letter-spacing: 3px;
+	margin-left: 15px; 
+	margin-top: 18px;
+	margin-bottom: 12px;
+}
+
+.current-stocks-wrapper {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+td {
+	padding: 10px;
+}
+
+tr:nth-child(odd) {
+	background-color: #282828;
+}
+
+.positive {
+	color: #16FF04;
+}
+
+.negative {
+	color: red;
+}
+
+.current-proposals {
+	width: 280px;
+	background-color: #343333;
+}
+
+.current-proposals-header {
+	font-size: 18px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin: 20px;
+}
