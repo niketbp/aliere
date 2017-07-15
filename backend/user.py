@@ -14,10 +14,10 @@ class User():
             "investorFunds": [],
             "playerFunds": []
         }
-        test = db.users.insert_one(result)
+        db.users.insert_one(result)
 
     def update(self):
         pass
 
     def delete(self):
-        pass
+        db.users.delete_one({"username": self.username})
