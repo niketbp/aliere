@@ -18,7 +18,6 @@
 .profile-name {
     height: 22px;
     width: 120px;
-    font-family: ProximaNova-Regular;
     font-size: 18px;
     color: #FFFFFF;
     letter-spacing: 3px;
@@ -30,7 +29,6 @@
 .profile-balance {
     height: 17px;
     width: 151px;
-    font-family: ProximaNova-Regular;
     font-size: 14px;
     color: #FFFFFF;
     letter-spacing: 0;
@@ -45,7 +43,6 @@
     position: absolute;
     top: 170px;
     left: 16px;
-    font-family: ProximaNova-Regular;
     font-size: 18px;
     color: #FFFFFF;
     letter-spacing: 3px;
@@ -60,12 +57,9 @@
     width: 270px;
     height: 82px;
     background: #004242;
-    border-bottom: 1px solid #979797;
-    border-top: 1px solid #979797;
 }
 
 .fund-name-sidebar {
-    font-family: ProximaNova-Regular;
     font-size: 14px;
     color: #FFFFFF;
     letter-spacing: 3px;
@@ -75,7 +69,6 @@
 }
 
 .fund-value {
-    font-family: ProximaNova-Regular;
     font-size: 14px;
     color: #FFFFFF;
     letter-spacing: 3px;
@@ -86,7 +79,6 @@
 
 .add-funds {
     opacity: 0.5;
-    font-family: ProximaNova-Regular;
     font-size: 16px;
     color: #FFFFFF;
     letter-spacing: 2px;
