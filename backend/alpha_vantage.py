@@ -29,5 +29,5 @@ class AlphaVantage():
             'current': most_recent_stock_data['4. close']
         }
 
-av = AlphaVantage()
-print(av.get_current_ticker_data('MSFT'))
+    av = AlphaVantage()
+    print(av.get_ticker_data('MSFT'))
