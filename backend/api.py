@@ -8,10 +8,11 @@ mongo = PyMongo(app)
 
 def validate_arguments(args, num_args):
     if num_args != len(request.args):
-        return jsonify({'Error': "Incorrect number of arguments"})
+        raise Exception("Incorrect number of arguments")
     for arg in args:
         if not request.args.get(arg):
-            return jsonify({'Error': 'Incorrect argument provided'})
+            raise Exception("Incorrect argument %s provided" % arg)
+
 
 @app.route("/")
 def hello():
@@ -24,22 +25,28 @@ def user_add():
     username = request.args.get('user')
     # store user in db
 
-
-@app.route("/user/update")
-def user_update():
-
-
-@app.route("/user/data")
-def user_data():
-
-
-@app.route("/proposal/add")
-def proposal():
-
+#
+# @app.route("/user/update")
+# def user_update():
+#
+#
+# @app.route("/user/data")
+# def user_data():
+#
+#
+# @app.route("/proposal/add")
+# def proposal():
 
 
 @app.route("/stock")
 def stock():
-    validate_arguments('ticker', 1)
-    ticker = request.args.get('ticker')
-    alpha_vantage.get_ticker_data(ticker)
+    try:
+        validate_arguments('ticker', 1)
+        ticker = request.args.get('ticker')
+        return jsonify(alpha_vantage.get_ticker_data(ticker))
+    except Exception as e:
+        return jsonify({'Error:', str(e)})
+
+
+if __name__ == '__main__':
+    app.run()

@@ -1,6 +1,6 @@
 import requests
 
-import globals
+ALPHA_VANTAGE_KEY = '9YI4'
 
 class AlphaVantage():
 
@@ -10,7 +10,7 @@ class AlphaVantage():
     def get_ticker_data(self, symbol):
         function = 'function=TIME_SERIES_DAILY'
         symbol = 'symbol=' + symbol
-        api_key = 'apikey=' + globals.ALPHA_VANTAGE_KEY
+        api_key = 'apikey=' + ALPHA_VANTAGE_KEY
 
         params = '&'.join([function, symbol, api_key])
 
@@ -28,6 +28,3 @@ class AlphaVantage():
             'low': most_recent_stock_data['3. low'],
             'current': most_recent_stock_data['4. close']
         }
-
-av = AlphaVantage()
-print(av.get_current_ticker_data('MSFT'))
