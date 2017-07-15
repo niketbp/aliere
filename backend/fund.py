@@ -33,3 +33,6 @@ class Fund:
     def leave(self, username):
         id = db.funds.find_one({'fundName': self.fund_name})['_id']
         db.users.update_one({'username': username}, {'$pop': {'playerFunds': id}})
+
+    def get_data(self):
+        pass

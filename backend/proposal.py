@@ -40,3 +40,6 @@ class Proposal:
         db.users.update_one({'username': username}, {'$pop': {'proposals': id}})
         db.funds.update_one({'fundName': fund_name}, {'$pop': {'proposals': id}})
         db.proposals.delete_one({"proposalName": self.name})
+
+    def get_data(self):
+        pass
