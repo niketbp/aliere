@@ -6,7 +6,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 .controller('FeedController', ['$scope', function($scope) {
 
 	init();
-
+	$scope.name = window.localStorage.getItem("username");
 	function init(){
 
 	};
