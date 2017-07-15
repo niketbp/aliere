@@ -1,15 +1,10 @@
 'use strict';
 
 angular.module('aliereApp.feed', ['ngRoute'])
-.config(function($routeProvider) {
-	$routeProvider.when('/dashboard', {
-		controller: 'FeedController'
-	});
-}
 // Controller definition for this module
-.controller('FeedController', ['$scope', '$http' '$routeParams', function($scope, $http, $routeParams) {
+.controller('FeedController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
-	$scope.id = $routeParams.id;
+	//$scope.id = $routeParams.id;
 
 	$scope.addProposal = function(proposal) {
 		data = {
@@ -18,7 +13,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 			shares: proposal.shares,
 			transaction: 'buy',
 			user: window.localStorage.getItem('username'),
-			fund: $scope.id,
+			fund: 'Leo',// testing
 		};
 
 		$http({
@@ -26,6 +21,7 @@ angular.module('aliereApp.feed', ['ngRoute'])
 			data: data,
 			url: 'http://127.0.0.1:5000/proposal/create'
 		}).then(function successfulCallback(response) {
+			//reload feed
 
 		}, function(response) {
 
