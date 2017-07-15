@@ -20,7 +20,7 @@ def validate_arguments(args, num_args):
 
 @app.route("/")
 def hello():
-    return("Hello World!")
+    return "Hello World!"
 
 
 @app.route("/user/create")
